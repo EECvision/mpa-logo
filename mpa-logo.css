@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Display:900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: rgb(207, 25, 101);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logo {
+  width: 10em;
+  height: 6em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+}
+
+.bar {
+  width: 2em;
+  height: 0;
+  background: white;
+  position: relative;
+  animation-name: build;
+  animation-delay: 1s;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+}
+
+
+@keyframes build {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.bar-1::before,
+.bar-2::before, 
+.bar-3::before {
+  content: '';
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: -2em;
+  background: white;
+  animation-name: blink;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 3s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  opacity: 0;
+  transform-origin: bottom right;
+}
+
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(90deg);
+  }
+}
+
+.bar-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 2em;
+  height: 2em;
+  background: white;
+  position: absolute;
+  right: -2em;
+  opacity: 0.3;
+  transform: translateX(6em);
+  animation: align 1s both;
+  animation-delay: 2s;
+}
+
+@keyframes align {
+  0% {
+    transform: translateX(4em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.dot:nth-child(2) {
+  right: -4em;
+  transform-origin: top left;
+  animation-duration: 1s;
+  animation-name: align, rotate;
+  animation-delay: 3s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+  transform: rotate(-90deg);
+  }
+}
+
+.loader-container {
+  width: 100%;
+  height: 0.8em;
+  background: rgb(187, 23, 91);
+  border-radius: 0.5em;
+  margin: 2em auto;
+  animation: show 0.2s forwards;
+  animation-delay: 4s;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loader {
+  width: 0%;
+  height: 90%;
+  background: rgb(241, 104, 161);
+  border-radius: 0.5em;
+  animation: fill 4s alternate forwards;
+  animation-delay: 5s;
+}
+
+@keyframes fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.text {
+  font-size: 2rem;
+  color: white;
+  font-family: 'Red Hat Display', sans-serif;
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: scale(0.7);
+  }
+  20% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
